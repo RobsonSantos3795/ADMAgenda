@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de Contatos - Firebase</title>
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Agenda de Contatos</h1>
+
+    <!-- Formulário de Cadastro/Edição -->
+    <div class="form-group">
+      <input type="hidden" id="contact-id">
+      <input type="text" id="contact-name" placeholder="Nome do contato..." required>
+
+      <label style="font-size: 0.85rem; font-weight: 600;">Números de Telefone:</label>
+      <div id="phone-inputs-container" class="phone-list-inputs">
+        <div class="phone-input-group">
+          <input type="text" class="phone-input" placeholder="Adicione o número">
+          <button type="button" class="btn-danger" onclick="removePhoneInput(this)">X</button>
+        </div>
+      </div>
+      
+      <button type="button" class="btn-secondary" onclick="addPhoneInputField()">+ Adicionar outro número</button>
+      
+      <div style="display: flex; gap: 8px; margin-top: 8px;">
+        <button type="button" id="save-btn" onclick="saveContact()" style="flex: 1;">Salvar Contato</button>
+        <button type="button" id="cancel-btn" class="btn-secondary" onclick="resetForm()" style="display: none;">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Busca Rápida -->
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="🔍 Buscar contato pelo nome..." oninput="filterContacts()">
+    </div>
+
+    <!-- Lista de Contatos -->
+    <div id="contacts-list">
+      <p style="text-align: center; color: #6b7280;">Carregando contatos...</p>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (v10+ via CDN) -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
