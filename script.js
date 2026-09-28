@@ -88,8 +88,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 
     // Apagar Contato Inteiro
     window.deleteContact = async function(id) {
-      if (confirm("Tem certeza que deseja apagar este contato?")) {
-        await deleteDoc(doc(doc(db, "contatos", id)));
+        if (confirm("Tem certeza que deseja apagar este contato?")) {
+        try {
+            await deleteDoc(doc(db, "contatos", id));
+            console.log("Contato apagado com sucesso!");
+        } catch (error) {
+            console.error("Erro ao apagar contato:", error);
+        }
       }
     };
 
